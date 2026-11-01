@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pooja Gautam, ASP.NET and Node.js full-stack developer</title>
+    <meta
+      name="description"
+      content="Pooja Gautam is a full-stack developer in Kathmandu, Nepal, building web applications with ASP.NET Core, Node.js, Nest.js, React.js and Tailwind CSS."
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <meta property="og:title" content="Pooja Gautam, ASP.NET and Node.js full-stack developer" />
+    <meta property="og:description" content="Skills, selected work, experience and contact details." />
+    <script>
+      // Apply the saved theme before the page paints, so there's no flash
+      try {
+        // Dark by default; light only if the visitor chose it with the toggle
+        var t = localStorage.getItem("portfolio-theme-v2")
+        var dark = !t || t === "dark" || (t === "system" && matchMedia("(prefers-color-scheme: dark)").matches)
+        if (dark) document.documentElement.classList.add("dark")
+      } catch (e) {
+        document.documentElement.classList.add("dark")
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

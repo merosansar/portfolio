@@ -1,0 +1,195 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------
+   Colours — change these to re-colour the whole site.
+   Light: white, navy text, one confident blue.
+   ------------------------------------------------------------------ */
+:root {
+  --radius: 0.75rem;
+
+  --background: #ffffff;
+  --foreground: #0f1b33;
+  --card: #ffffff;
+  --card-foreground: #0f1b33;
+  --popover: #ffffff;
+  --popover-foreground: #0f1b33;
+  --primary: #2459e0;
+  --primary-foreground: #ffffff;
+  --secondary: #f2f5fa;
+  --secondary-foreground: #0f1b33;
+  --muted: #f2f5fa;
+  --muted-foreground: #526077;
+  --accent: #eef3fe;
+  --accent-foreground: #0f1b33;
+  --destructive: #c4320a;
+  --border: #e3e8f0;
+  --input: #d3dae5;
+  --ring: #2459e0;
+
+  /* Extra brand tokens */
+  --surface: #f7f9fc;
+  --brand-soft: #eaf0fd;
+  --success: #12a150;
+  --grid-line: rgb(15 27 51 / 0.06);
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e6eaf2;
+  --card: #111a2e;
+  --card-foreground: #e6eaf2;
+  --popover: #111a2e;
+  --popover-foreground: #e6eaf2;
+  --primary: #5b8cff;
+  --primary-foreground: #0b1220;
+  --secondary: #162036;
+  --secondary-foreground: #e6eaf2;
+  --muted: #162036;
+  --muted-foreground: #93a0b8;
+  --accent: #18233b;
+  --accent-foreground: #e6eaf2;
+  --destructive: #f97066;
+  --border: #1f2a44;
+  --input: #2a3754;
+  --ring: #5b8cff;
+
+  --surface: #0e172a;
+  --brand-soft: #16244a;
+  --success: #34d399;
+  --grid-line: rgb(230 234 242 / 0.05);
+}
+
+@theme {
+  /* Loaded from Google Fonts in index.html */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-surface: var(--surface);
+  --color-brand-soft: var(--brand-soft);
+  --color-success: var(--success);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Faint grid behind the hero, fading out towards the edges */
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 30%, transparent 75%);
+  }
+
+  /* Endless logo strips: the first row moves left, the second moves right.
+     Hovering a row pauses it. */
+  .marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track {
+    animation: marquee 50s linear infinite;
+  }
+  .marquee-track-reverse {
+    animation: marquee-reverse 50s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:hover .marquee-track-reverse {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

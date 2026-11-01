@@ -1,0 +1,271 @@
+/* =====================================================================
+   ✏️  EDIT THIS FILE TO MAKE THE PORTFOLIO YOURS
+   ---------------------------------------------------------------------
+   Every word on the site comes from here. Save the file and the page
+   updates instantly while the site is running.
+
+   ⚠️  The PROJECTS below are still SAMPLE CONTENT — replace them with
+   your own work before you publish.
+   ===================================================================== */
+
+export type Project = {
+  slug: string
+  title: string
+  summary: string
+  year: string
+  role: string
+  /** Technologies used — names that match a skill show its logo */
+  stack: string[]
+  caseStudy: {
+    problem: string
+    approach: string[]
+    outcome: string
+  }
+  links: { live?: string; source?: string }
+}
+
+export type Job = {
+  org: string
+  /** Your job title there, e.g. "ASP.NET developer" */
+  role?: string
+  /** When you worked there, e.g. "2022 – 2024" or "2024 – now" */
+  period?: string
+  place?: string
+  /** Company website, e.g. "https://example.com" */
+  url?: string
+  /** The company's old name, if it has changed */
+  formerly?: string
+  /** Marks the job you have now */
+  current?: boolean
+  /** One line per thing you did or achieved there */
+  points?: string[]
+}
+
+export type Education = {
+  /** Short form shown as the title, e.g. "BSc CSIT" */
+  degree: string
+  /** Full name of the degree */
+  fullDegree?: string
+  school: string
+  /** e.g. "2015 – 2019" */
+  period?: string
+  place?: string
+  url?: string
+}
+
+export type SkillGroup = {
+  group: string
+  description: string
+  icon: "frontend" | "backend" | "database" | "cloud"
+  items: string[]
+}
+
+export const profile = {
+  name: "Pooja Gautam",
+  fullName: "Pooja Gautam",
+  /** Shown in the logo and in place of a photo */
+  initials: "PG",
+  role: "ASP.NET & Node.js Full-Stack Developer",
+  location: "Kathmandu, Nepal",
+  intro:
+    "I build complete web applications on two stacks, ASP.NET Core with C# and Node.js with Nest.js, from microservices and SQL Server, PostgreSQL or MongoDB databases to fast React.js and Tailwind CSS interfaces.",
+  currently: "Smart Solutions Technology",
+  /** Website of your current company — leave "" for no link */
+  currentlyUrl: "https://sst.asia/",
+  email: "gautam2.pooja@gmail.com",
+  /** Put your CV in the /public folder as resume.pdf, or set to "" to hide the buttons */
+  resumeUrl: "/resume.pdf",
+  /** Your photo: put it in /public (e.g. /pooja.jpg) and set photo: "/pooja.jpg". Leave "" to show your initial */
+  photo: "",
+  socials: {
+    github: "https://github.com/merosansar",
+    linkedin: "https://www.linkedin.com/in/your-username",
+  },
+}
+
+export const about = {
+  heading: "About me",
+  paragraphs: [
+    "I'm a full-stack developer based in Kathmandu, Nepal, currently working at Smart Solutions Technology Pvt. Ltd. I design, build and maintain scalable web applications across two ecosystems: .NET, with ASP.NET Core, ASP.NET MVC and C#, and Node.js, with Nest.js, delivered through modern React.js and Next.js frontends.",
+    "My work covers the full application lifecycle. I design relational and NoSQL data models in SQL Server, PostgreSQL and MongoDB, build RESTful APIs and microservices, and create responsive interfaces with TypeScript, Tailwind CSS, Bootstrap and shadcn/ui. I containerise applications with Docker, deploy them to Microsoft Azure, and follow Git-based workflows with code reviews on GitHub and GitLab.",
+    "I take ownership of features from database design through to production release, with a focus on clean, maintainable code and reliable performance. I value clear communication with teammates and stakeholders, and I aim to build software that is dependable for users and easy for other developers to extend.",
+  ],
+  facts: [
+    { icon: "location", label: "Based in", value: "Kathmandu, Nepal" },
+    { icon: "work", label: "Currently at", value: "Smart Solutions Technology Pvt. Ltd.", href: "https://sst.asia/" },
+    { icon: "history", label: "Previously at", value: "Creation Soft Nepal, Gapsco and IMS Software" },
+    { icon: "focus", label: "Focus", value: "ASP.NET Core, Node.js, Nest.js, React.js" },
+    { icon: "education", label: "Education", value: "BSc CSIT, Tribhuvan University" },
+  ] as const,
+}
+
+/* Your skills by area. Skills with a known name show their logo automatically. */
+export const skills: SkillGroup[] = [
+  {
+    group: "Frontend",
+    description: "Interfaces people see and use",
+    icon: "frontend",
+    items: ["HTML", "CSS", "JavaScript", "TypeScript", "React.js", "Next.js", "Tailwind CSS", "Bootstrap", "shadcn/ui"],
+  },
+  {
+    group: "Backend",
+    description: "APIs, microservices and business logic",
+    icon: "backend",
+    items: ["ASP.NET Core", "ASP.NET Core microservices", "ASP.NET MVC", "C#", "Node.js", "Nest.js", "Nest.js microservices", "REST APIs"],
+  },
+  {
+    group: "Database",
+    description: "Designing and querying data",
+    icon: "database",
+    items: ["SQL Server", "PostgreSQL", "MongoDB"],
+  },
+  {
+    group: "Cloud & DevOps",
+    description: "Where it runs and how it ships",
+    icon: "cloud",
+    items: ["Azure", "Docker", "Git", "GitHub", "GitLab"],
+  },
+]
+
+/* The two ways you work full stack */
+export const fullStacks: { name: string; items: string[] }[] = [
+  {
+    name: "Full stack with .NET",
+    items: ["ASP.NET Core", "ASP.NET MVC", "C#", "React.js", "Tailwind CSS", "SQL Server", "Azure"],
+  },
+  {
+    name: "Full stack with Node.js",
+    items: ["Node.js", "Nest.js", "React.js", "Tailwind CSS", "PostgreSQL", "MongoDB", "Docker"],
+  },
+]
+
+export const projects: Project[] = [
+  {
+    slug: "trailhead",
+    title: "Trailhead",
+    summary: "A booking platform for trekking permits and guides, with an ASP.NET Core API and a React frontend on Azure.",
+    year: "2026",
+    role: "Full-stack developer",
+    stack: ["ASP.NET Core", "React.js", "TypeScript", "SQL Server", "Azure", "Docker"],
+    caseStudy: {
+      problem:
+        "Trekkers had to queue in offices to buy permits, and the old website timed out on the slow connections common at trailheads.",
+      approach: [
+        "Built an ASP.NET Core Web API with SQL Server for permits, guides and payments, with role-based access for agency staff.",
+        "Wrote a lightweight React and TypeScript frontend that keeps a booking in progress if the connection drops.",
+        "Containerised the app with Docker and deployed it to Azure through a CI pipeline, with staging and production slots.",
+      ],
+      outcome: "Online permit sales doubled in the first season, and support calls about failed payments dropped by 60%.",
+    },
+    links: { live: "https://example.com", source: "https://github.com/merosansar" },
+  },
+  {
+    slug: "pratiksha",
+    title: "Pratiksha",
+    summary: "Appointments and a live patient queue for small clinics, so patients wait at home instead of in the hallway.",
+    year: "2025",
+    role: "Full-stack developer",
+    stack: ["Next.js", "Nest.js", "PostgreSQL", "shadcn/ui", "Docker"],
+    caseStudy: {
+      problem:
+        "Clinics managed appointments in paper registers, and patients often waited for hours without knowing when they'd be seen.",
+      approach: [
+        "Designed a PostgreSQL schema for doctors, schedules and visits, and a Nest.js API with real-time queue updates.",
+        "Built the reception dashboard and patient booking pages in Next.js with Tailwind CSS and shadcn/ui.",
+        "Shipped it as Docker containers so each clinic could run it on a small server or in the cloud.",
+      ],
+      outcome: "Average time spent in the waiting room fell from about 90 minutes to under 30 at the pilot clinic.",
+    },
+    links: { source: "https://github.com/merosansar" },
+  },
+  {
+    slug: "haat",
+    title: "Haat",
+    summary: "Weekly pre-orders from local farmers, with pickup slots and a picking list for each stall.",
+    year: "2024",
+    role: "Freelance developer",
+    stack: ["Next.js", "ASP.NET Core", "PostgreSQL", "Tailwind CSS"],
+    caseStudy: {
+      problem:
+        "A farmers' market collective took orders over phone calls and chat messages, so produce was often over- or under-picked.",
+      approach: [
+        "Built an ordering site in Next.js with a weekly menu that farmers update from their phones.",
+        "Wrote an ASP.NET Core API with PostgreSQL for orders, stock and pickup time slots.",
+        "Generated a printable picking list for each farmer, grouped by customer.",
+      ],
+      outcome: "Food waste fell noticeably in the first month, and the collective now runs orders without a spreadsheet.",
+    },
+    links: { live: "https://example.com" },
+  },
+  {
+    slug: "patro",
+    title: "Patro",
+    summary: "An open-source Bikram Sambat calendar toolkit: a .NET library on NuGet and a React date picker on npm.",
+    year: "2023",
+    role: "Creator and maintainer",
+    stack: ["C#", ".NET", "React.js", "TypeScript", "GitHub Actions"],
+    caseStudy: {
+      problem:
+        "Nepali software needs dates in Bikram Sambat, but existing libraries were unmaintained and didn't agree with each other.",
+      approach: [
+        "Wrote a tested C# conversion library and published it on NuGet for ASP.NET projects.",
+        "Built a keyboard-accessible React date picker that uses the same calendar data.",
+        "Set up automated tests and releases for both packages on GitHub.",
+      ],
+      outcome: "Used in production by several Nepali companies and maintained with help from community contributors.",
+    },
+    links: { source: "https://github.com/merosansar" },
+  },
+]
+
+/* Newest first. Add your job title, years and a few lines about what you did
+   at each company — anything you leave out is simply not shown. */
+export const experience: Job[] = [
+  {
+    org: "Smart Solutions Technology Pvt. Ltd.",
+    url: "https://sst.asia/",
+    role: "ASP.NET full-stack developer",
+    current: true,
+    period: "",
+    points: ["Working on microservices projects built with ASP.NET Core and Nest.js."],
+  },
+  {
+    org: "Creation Soft Nepal Pvt. Ltd.",
+    role: "",
+    period: "",
+    points: [],
+  },
+  {
+    org: "Gapsco Pvt. Ltd.",
+    role: "",
+    period: "",
+    points: [],
+  },
+  {
+    org: "IMS Software Pvt. Ltd.",
+    formerly: "IMS Himalayan Sangrila Pvt. Ltd.",
+    url: "https://imssoftware.com.np/",
+    role: "",
+    period: "",
+    points: [],
+  },
+]
+
+/* Your degrees — add the years in "period" if you'd like them shown */
+export const education: Education[] = [
+  {
+    degree: "BSc CSIT",
+    fullDegree: "Bachelor of Science in Computer Science and Information Technology",
+    school: "Tribhuvan University (TU)",
+    period: "",
+    url: "https://tu.edu.np/",
+  },
+]
+
+export const nav = [
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+]
