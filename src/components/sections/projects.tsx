@@ -22,6 +22,13 @@ const COVERS = [
   "from-slate-700 to-slate-900",
 ]
 
+/** The source-code links of a project: several `sources` (e.g. frontend and backend), or one `source` */
+function getSources(project: Project) {
+  const { source, sources } = project.links
+  if (sources?.length) return sources
+  return source ? [{ label: "Source", url: source }] : []
+}
+
 export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="py-24 md:py-28">
@@ -82,6 +89,7 @@ function Cover({ project, cover, className }: { project: Project; cover: string;
 }
 
 function ProjectCard({ project, cover }: { project: Project; cover: string }) {
+  const sources = getSources(project)
   return (
     <Dialog>
       <article className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
@@ -107,7 +115,7 @@ function ProjectCard({ project, cover }: { project: Project; cover: string }) {
             ))}
           </ul>
 
-          <div className="mt-auto flex items-center gap-2 pt-6">
+          <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
             <DialogTrigger asChild>
               <Button variant="default" size="sm" className="h-9">
                 View details
@@ -122,12 +130,26 @@ function ProjectCard({ project, cover }: { project: Project; cover: string }) {
                 </a>
               </Button>
             )}
-            {project.links.source && (
-              <Button asChild variant="ghost" size="icon" aria-label={`${project.title} source code`}>
-                <a href={project.links.source} target="_blank" rel="noreferrer">
-                  <GitHubIcon className="size-[18px]" />
-                </a>
-              </Button>
+            {sources.map((source) =>
+              sources.length > 1 ? (
+                <Button key={source.url} asChild variant="ghost" size="sm" className="h-9">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} ${source.label.toLowerCase()} source code`}
+                  >
+                    <GitHubIcon className="size-4" />
+                    {source.label}
+                  </a>
+                </Button>
+              ) : (
+                <Button key={source.url} asChild variant="ghost" size="icon" aria-label={`${project.title} source code`}>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    <GitHubIcon className="size-[18px]" />
+                  </a>
+                </Button>
+              ),
             )}
           </div>
         </div>
@@ -140,6 +162,7 @@ function ProjectCard({ project, cover }: { project: Project; cover: string }) {
 
 function CaseStudy({ project, cover }: { project: Project; cover: string }) {
   const { caseStudy, links } = project
+  const sources = getSources(project)
   return (
     <DialogContent
       className="flex max-h-[92svh] flex-col gap-0 overflow-y-auto p-0 focus:outline-none sm:max-w-2xl [&>button:last-child]:rounded-full [&>button:last-child]:bg-background/90 [&>button:last-child]:p-1.5 [&>button:last-child]:opacity-100"
@@ -189,7 +212,7 @@ function CaseStudy({ project, cover }: { project: Project; cover: string }) {
           </ul>
         </div>
 
-        {(links.live || links.source) && (
+        {(links.live || sources.length > 0) && (
           <div className="mt-8 flex flex-wrap gap-3">
             {links.live && (
               <Button asChild>
@@ -199,14 +222,14 @@ function CaseStudy({ project, cover }: { project: Project; cover: string }) {
                 </a>
               </Button>
             )}
-            {links.source && (
-              <Button asChild variant="outline">
-                <a href={links.source} target="_blank" rel="noreferrer">
+            {sources.map((source) => (
+              <Button key={source.url} asChild variant="outline">
+                <a href={source.url} target="_blank" rel="noreferrer">
                   <GitHubIcon className="size-4" />
-                  View the source code
+                  {sources.length > 1 ? `${source.label} source code` : "View the source code"}
                 </a>
               </Button>
-            )}
+            ))}
           </div>
         )}
       </div>

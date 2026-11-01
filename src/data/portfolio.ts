@@ -21,7 +21,13 @@ export type Project = {
     approach: string[]
     outcome: string
   }
-  links: { live?: string; source?: string }
+  links: {
+    live?: string
+    /** One source-code link */
+    source?: string
+    /** Or several, for example the frontend and backend repositories */
+    sources?: { label: string; url: string }[]
+  }
 }
 
 export type Job = {
@@ -160,8 +166,13 @@ export const projects: Project[] = [
       outcome:
         "A complete, working product with demo businesses and all four roles. The end-to-end tests prove that one workspace can never read another's invoices, that concurrent invoices are numbered without gaps, and that a removed team member is locked out immediately.",
     },
-    // Add a "source" link here when you have a GitHub repository for this project.
-    links: { live: "https://bizzdashboard-frontend.onrender.com" },
+    links: {
+      live: "https://bizzdashboard-frontend.onrender.com",
+      sources: [
+        { label: "Frontend", url: "https://github.com/merosansar/bizzDashboard_frontend" },
+        { label: "Backend", url: "https://github.com/merosansar/bizzDashboard_backend" },
+      ],
+    },
   },
   {
     slug: "guff",
@@ -183,8 +194,13 @@ export const projects: Project[] = [
       outcome:
         "A complete, working chat app with demo teammates who reply automatically, backed by 74 automated tests against MongoDB. They include a test that stops the server mid-conversation to prove nothing is duplicated, and one that runs two API servers sharing live events.",
     },
-    // Add a "source" link here when you have a GitHub repository for this project.
-    links: { live: "https://guff-frontend.onrender.com" },
+    links: {
+      live: "https://guff-frontend.onrender.com",
+      sources: [
+        { label: "Frontend", url: "https://github.com/merosansar/guff_frontend" },
+        { label: "Backend", url: "https://github.com/merosansar/guff_backend" },
+      ],
+    },
   },
   {
     slug: "trailhead",
