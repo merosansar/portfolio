@@ -141,6 +141,30 @@ export const fullStacks: { name: string; items: string[] }[] = [
 
 export const projects: Project[] = [
   {
+    slug: "hisab",
+    title: "Hisab",
+    summary:
+      "A multi-tenant invoicing and cash-flow app for small businesses in Nepal: invoices with 13% VAT, payments, expenses and a live dashboard of who owes what.",
+    year: "2026",
+    role: "Full-stack developer",
+    stack: ["Nest.js", "React.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "Docker"],
+    caseStudy: {
+      problem:
+        "Small businesses in Nepal need to issue invoices with 13% VAT, take full or partial payments by bank transfer, eSewa, Khalti or Fonepay, track expenses, and see at a glance who owes them money and how late it is. Hisab gives each business its own workspace for all of this.",
+      approach: [
+        "Built a Nest.js API with TypeORM and PostgreSQL where every table is scoped to a workspace, with owner, admin, member and viewer roles checked against the database on every request, and JWT sign-in with rotating refresh tokens in httpOnly cookies.",
+        "Handled money and concurrency carefully: amounts stored as numeric(14,2) and calculated in integer paisa with identical rounding on the server and in the editor, gap-free invoice numbers per workspace, row locks for payments, and optimistic concurrency so a stale draft save is rejected.",
+        "Built the React 19 and TypeScript frontend with Tailwind CSS, shadcn/ui, TanStack Query and Recharts: an invoice editor with live VAT totals, a dashboard with money in and out, receivables aging and best customers, light and dark themes, phone-friendly layouts and Nepali number formatting.",
+        "Covered the API with Vitest unit and end-to-end tests against PostgreSQL, documented it with Swagger, and packaged the database, API and website to start together with Docker Compose.",
+      ],
+      outcome:
+        "A complete, working product with demo businesses and all four roles. The end-to-end tests prove that one workspace can never read another's invoices, that concurrent invoices are numbered without gaps, and that a removed team member is locked out immediately.",
+    },
+    // Add your links here when you have them, for example:
+    // links: { live: "https://...", source: "https://github.com/merosansar/..." },
+    links: {},
+  },
+  {
     slug: "trailhead",
     title: "Trailhead",
     summary: "A booking platform for trekking permits and guides, with an ASP.NET Core API and a React frontend on Azure.",
