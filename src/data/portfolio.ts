@@ -165,6 +165,30 @@ export const projects: Project[] = [
     links: {},
   },
   {
+    slug: "guff",
+    title: "Guff",
+    summary:
+      "A real-time team chat app with channels, direct messages, mentions, reactions, file sharing and search. Messages, typing and who's online reach everyone instantly.",
+    year: "2026",
+    role: "Full-stack developer",
+    stack: ["Node.js", "React.js", "TypeScript", "MongoDB", "Socket.IO", "Tailwind CSS", "shadcn/ui", "Docker"],
+    caseStudy: {
+      problem:
+        "A team chat has to feel instant and still be correct: no message sent twice after a dropped connection, no unread badges that disagree between tabs, and no private conversation visible to outsiders. Guff is a complete chat app built to get those details right.",
+      approach: [
+        "Built the API with Node.js, TypeScript, Express 5 and MongoDB, and a Socket.IO layer that pushes messages, edits, reactions, typing, read receipts and presence live, using per-user and per-channel rooms so people only receive what they are allowed to see.",
+        "Made delivery reliable: every message carries a client ID with a unique index, so a resend after a dropped connection never creates a duplicate. Messages written offline wait in an outbox and go out on reconnect, and each open conversation fetches what it missed with a cursor.",
+        "Covered security and files: rotating refresh tokens stored as hashes in httpOnly cookies, socket tokens checked at the handshake and renewed while connected, zod validation on every request and socket event, uploads in GridFS behind expiring signed links, and private channels that return 404 to outsiders.",
+        "Built the React 19 and TypeScript frontend with Tailwind CSS, shadcn/ui and TanStack Query: unread counts with a New line, replies, mentions with autocomplete, inline image previews, Ctrl+K search, light and dark themes and a phone layout. Packaged it with Docker Compose and a Render blueprint.",
+      ],
+      outcome:
+        "A complete, working chat app with demo teammates who reply automatically, backed by 74 automated tests against MongoDB. They include a test that stops the server mid-conversation to prove nothing is duplicated, and one that runs two API servers sharing live events.",
+    },
+    // Add your links here when you have them, for example:
+    // links: { live: "https://...", source: "https://github.com/merosansar/..." },
+    links: {},
+  },
+  {
     slug: "trailhead",
     title: "Trailhead",
     summary: "A booking platform for trekking permits and guides, with an ASP.NET Core API and a React frontend on Azure.",
