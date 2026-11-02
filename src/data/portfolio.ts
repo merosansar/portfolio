@@ -85,7 +85,7 @@ export const profile = {
   photo: "",
   socials: {
     github: "https://github.com/merosansar",
-    linkedin: "https://www.linkedin.com/in/your-username",
+    linkedin: "https://www.linkedin.com/in/poojagautam52",
   },
 }
 
@@ -202,82 +202,6 @@ export const projects: Project[] = [
       ],
     },
   },
-  {
-    slug: "trailhead",
-    title: "Trailhead",
-    summary: "A booking platform for trekking permits and guides, with an ASP.NET Core API and a React frontend on Azure.",
-    year: "2026",
-    role: "Full-stack developer",
-    stack: ["ASP.NET Core", "React.js", "TypeScript", "SQL Server", "Azure", "Docker"],
-    caseStudy: {
-      problem:
-        "Trekkers had to queue in offices to buy permits, and the old website timed out on the slow connections common at trailheads.",
-      approach: [
-        "Built an ASP.NET Core Web API with SQL Server for permits, guides and payments, with role-based access for agency staff.",
-        "Wrote a lightweight React and TypeScript frontend that keeps a booking in progress if the connection drops.",
-        "Containerised the app with Docker and deployed it to Azure through a CI pipeline, with staging and production slots.",
-      ],
-      outcome: "Online permit sales doubled in the first season, and support calls about failed payments dropped by 60%.",
-    },
-    links: { live: "https://example.com", source: "https://github.com/merosansar" },
-  },
-  {
-    slug: "pratiksha",
-    title: "Pratiksha",
-    summary: "Appointments and a live patient queue for small clinics, so patients wait at home instead of in the hallway.",
-    year: "2025",
-    role: "Full-stack developer",
-    stack: ["Next.js", "Nest.js", "PostgreSQL", "shadcn/ui", "Docker"],
-    caseStudy: {
-      problem:
-        "Clinics managed appointments in paper registers, and patients often waited for hours without knowing when they'd be seen.",
-      approach: [
-        "Designed a PostgreSQL schema for doctors, schedules and visits, and a Nest.js API with real-time queue updates.",
-        "Built the reception dashboard and patient booking pages in Next.js with Tailwind CSS and shadcn/ui.",
-        "Shipped it as Docker containers so each clinic could run it on a small server or in the cloud.",
-      ],
-      outcome: "Average time spent in the waiting room fell from about 90 minutes to under 30 at the pilot clinic.",
-    },
-    links: { source: "https://github.com/merosansar" },
-  },
-  {
-    slug: "haat",
-    title: "Haat",
-    summary: "Weekly pre-orders from local farmers, with pickup slots and a picking list for each stall.",
-    year: "2024",
-    role: "Freelance developer",
-    stack: ["Next.js", "ASP.NET Core", "PostgreSQL", "Tailwind CSS"],
-    caseStudy: {
-      problem:
-        "A farmers' market collective took orders over phone calls and chat messages, so produce was often over- or under-picked.",
-      approach: [
-        "Built an ordering site in Next.js with a weekly menu that farmers update from their phones.",
-        "Wrote an ASP.NET Core API with PostgreSQL for orders, stock and pickup time slots.",
-        "Generated a printable picking list for each farmer, grouped by customer.",
-      ],
-      outcome: "Food waste fell noticeably in the first month, and the collective now runs orders without a spreadsheet.",
-    },
-    links: { live: "https://example.com" },
-  },
-  {
-    slug: "patro",
-    title: "Patro",
-    summary: "An open-source Bikram Sambat calendar toolkit: a .NET library on NuGet and a React date picker on npm.",
-    year: "2023",
-    role: "Creator and maintainer",
-    stack: ["C#", ".NET", "React.js", "TypeScript", "GitHub Actions"],
-    caseStudy: {
-      problem:
-        "Nepali software needs dates in Bikram Sambat, but existing libraries were unmaintained and didn't agree with each other.",
-      approach: [
-        "Wrote a tested C# conversion library and published it on NuGet for ASP.NET projects.",
-        "Built a keyboard-accessible React date picker that uses the same calendar data.",
-        "Set up automated tests and releases for both packages on GitHub.",
-      ],
-      outcome: "Used in production by several Nepali companies and maintained with help from community contributors.",
-    },
-    links: { source: "https://github.com/merosansar" },
-  },
 ]
 
 /* Newest first. Add your job title, years and a few lines about what you did
@@ -286,29 +210,49 @@ export const experience: Job[] = [
   {
     org: "Smart Solutions Technology Pvt. Ltd.",
     url: "https://sst.asia/",
-    role: "ASP.NET full-stack developer",
+    role: "Full Stack Developer (ASP.NET & Node.js)",
     current: true,
-    period: "",
+    period: "Oct 2024 – Present",
+    place: "Kamaladi, Kathmandu",
     points: ["Working on microservices projects built with ASP.NET Core and Nest.js."],
   },
   {
     org: "Creation Soft Nepal Pvt. Ltd.",
-    role: "",
-    period: "",
-    points: [],
+    url: "https://rocketreach.co/creation-soft-nepal-pvt-ltd-profile_b41c2fd6ff6922ba",
+    role: "Dotnet Developer",
+    period: "Jul 2023 – Oct 2024",
+    place: "Kathmandu, Nepal",
+    points: [
+      "Worked as a .NET developer on the remittance project, responsible for designing, developing and maintaining a secure and efficient financial transaction system.",
+      "Developed and optimized remittance processing modules using ASP.NET MVC (.NET Framework 4.8) and SQL Server 2016.",
+      "Designed and implemented stored procedures, functions and database schemas to handle large-scale financial transactions.",
+      "Created detailed financial and transaction reports, improving operational transparency and compliance.",
+      "Integrated third-party APIs for payment processing, ensuring seamless fund transfers.",
+      "Implemented role-based authentication and authorization for secure access control.",
+      "Enhanced system performance by optimizing database queries and improving application efficiency.",
+      "Collaborated with cross-functional teams to meet regulatory and business requirements.",
+    ],
   },
   {
     org: "Gapsco Pvt. Ltd.",
-    role: "",
-    period: "",
-    points: [],
+    role: "Software Engineer",
+    period: "Nov 2016 – Nov 2018",
+    place: "Gairidhara, Kathmandu",
+    points: ["Worked with ASP.NET MVC and Entity Framework."],
   },
   {
     org: "IMS Software Pvt. Ltd.",
     formerly: "IMS Himalayan Sangrila Pvt. Ltd.",
     url: "https://imssoftware.com.np/",
-    role: "",
-    period: "",
+    role: "Software Developer",
+    period: "Apr 2016 – Nov 2016",
+    place: "Kathmandu, Nepal",
+    points: ["Worked with ASP.NET and MongoDB."],
+  },
+  {
+    org: "Tulips Technologies",
+    role: "Intern",
+    period: "Feb 2015 – May 2015",
     points: [],
   },
 ]
